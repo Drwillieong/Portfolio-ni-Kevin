@@ -115,6 +115,10 @@ for (let i = 0; i < filterBtn.length; i++) {
 
 
 
+
+
+
+
 // contact form variables
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
@@ -143,17 +147,19 @@ const pages = document.querySelectorAll("[data-page]");
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
+    // Remove active class from all links and pages
+    navigationLinks.forEach(link => link.classList.remove("active"));
+    pages.forEach(page => page.classList.remove("active"));
 
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
-      }
+    // Add active class to clicked link
+    this.classList.add("active");
+
+    // Find and activate the corresponding page
+    const targetPage = Array.from(pages).find(page => page.dataset.page === this.innerHTML.toLowerCase());
+    if (targetPage) {
+      targetPage.classList.add("active");
     }
 
+    window.scrollTo(0, 0);
   });
 }
