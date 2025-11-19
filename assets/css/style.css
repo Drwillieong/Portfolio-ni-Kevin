@@ -838,8 +838,17 @@ main {
 
 .skills-list { padding: 20px; }
 
+.technical-skills .skills-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 15px;
+}
 
-.skills-item:not(:last-child) { margin-bottom: 15px; }
+.technical-skills .skills-item {
+  margin-bottom: 0;
+}
+
+.soft-skills .skills-item:not(:last-child) { margin-bottom: 15px; }
 
 .skill .title-wrapper {
   display: flex;
@@ -1499,6 +1508,11 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   .skills-item:not(:last-child) { margin-bottom: 25px; }
+
+  .skills-container {
+    flex-direction: column;
+    gap: 20px;
+  }
 
 
 
